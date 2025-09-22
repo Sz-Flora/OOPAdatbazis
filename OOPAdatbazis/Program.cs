@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOPAdatbazis.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,14 +11,14 @@ namespace OOPAdatbazis
     {
         static void Main(string[] args)
         {
-            Console.Write("Kérem az adatbázis nevét: ");
-            string dbName = Console.ReadLine();
-            Console.Write("Kérem az felhasználó nevét: ");
-            string userName = Console.ReadLine();
-            Console.Write("Kérem az felhasználó jelszavát: ");
-            string userpass = Console.ReadLine();
+            ISqlStatements sqlStatements = new TableBooks();
 
-            Connect c = new Connect(dbName,userName,userpass);
+            foreach (var item in sqlStatements.GetAllBooks())
+            {
+                var book = item.GetType().GetProperties();
+                Console.WriteLine($"{book[0].Name} = {book[0].GetValue(item)}, {book[1].Name}={book[1].GetValue(item)}");
+            }
+            Console.ReadKey();
         }
     }
 }

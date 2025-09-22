@@ -13,11 +13,22 @@ namespace OOPAdatbazis
         {
             ISqlStatements sqlStatements = new TableBooks();
 
+            //Feladat 1
+            /*
             foreach (var item in sqlStatements.GetAllBooks())
             {
                 var book = item.GetType().GetProperties();
                 Console.WriteLine($"{book[0].Name} = {book[0].GetValue(item)}, {book[1].Name}={book[1].GetValue(item)}");
             }
+            */
+
+            //Feladat 2 
+            Console.Write("Kérem a rekord id-t: ");
+
+            var item = sqlStatements.GetById(int.Parse(Console.ReadLine()));
+            var book = item.GetType().GetProperties();
+
+            Console.WriteLine($"{book[1].Name}, {book[1].GetValue(item)}");
             Console.ReadKey();
         }
     }

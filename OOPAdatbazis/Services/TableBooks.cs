@@ -15,7 +15,7 @@ namespace OOPAdatbazis.Services
 
             conn.Connection.Open();
 
-            string sql = "INSERT INTO `books`(`title`, `author`, `releaseDate`) VALUES ('@title','@author','@release')";
+            string sql = "INSERT INTO `books`(`title`, `author`, `releaseDate`) VALUES (@title,@author,@release)";
 
             MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
 
@@ -115,7 +115,29 @@ namespace OOPAdatbazis.Services
 
         public object UpdateRecord(int id, object updateBook)
         {
-            throw new NotImplementedException();
+            Connect conn = new Connect("library");
+
+            conn.Connection.Open();
+
+            string sql = "UPDATE `books` SET `title`=@title,`author`=@author,`releaseDate`=@release WHERE id = @id";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
+
+            var book = updateBook.GetType().GetProperties();
+
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@title", book[0].GetValue(updateBook));
+            cmd.Parameters.AddWithValue("@author", book[1].GetValue(updateBook));
+            cmd.Parameters.AddWithValue("@release", book[2].GetValue(updateBook));
+
+            cmd.ExecuteNonQuery();
+
+            conn.Connection.Close();
+
+            return new
+            {
+                Message = "Sikeres frissítés!"
+            };
         }
     }
 }

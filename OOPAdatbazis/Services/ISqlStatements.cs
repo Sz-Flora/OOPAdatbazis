@@ -10,8 +10,8 @@ namespace OOPAdatbazis.Services
     {
         List<object> GetAllRecords();
         object GetById(int id);
-        object AddNewRecord(object newBook);
+        object AddNewRecord(object newRecord);
         object DeleteRecord(int id);
-        object UpdateRecord(int id, object updateBook);
+        object UpdateRecord(int id, object updateRecord);
     }
 }

@@ -33,6 +33,7 @@ namespace OOPAdatbazis
             */
 
             //Feladat 3
+            /*
             Console.Write("Kérem a könyv címét: ");
             string cim = Console.ReadLine();
             Console.Write("Kérem a könyv szerzőjét: ");
@@ -48,6 +49,11 @@ namespace OOPAdatbazis
             };
 
             sqlStatements.AddNewRecord(book);
+            */
+
+            //Feladat 4
+            Console.Write("Kérem a törlendő rekord id-t: ");
+            Console.WriteLine(sqlStatements.DeleteRecord(int.Parse(Console.ReadLine())));
 
             Console.ReadKey();
         }

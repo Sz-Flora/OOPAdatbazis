@@ -23,12 +23,32 @@ namespace OOPAdatbazis
             */
 
             //Feladat 2 
+            /*
             Console.Write("Kérem a rekord id-t: ");
 
             var item = sqlStatements.GetById(int.Parse(Console.ReadLine()));
             var book = item.GetType().GetProperties();
 
             Console.WriteLine($"{book[1].Name}, {book[1].GetValue(item)}");
+            */
+
+            //Feladat 3
+            Console.Write("Kérem a könyv címét: ");
+            string cim = Console.ReadLine();
+            Console.Write("Kérem a könyv szerzőjét: ");
+            string szerzo = Console.ReadLine();
+            Console.Write("Kérem a könyv kiadási dátumát: ");
+            string datum = Console.ReadLine();
+
+            var book = new
+            {
+                Title = cim,
+                Author = szerzo,
+                Release = datum,
+            };
+
+            sqlStatements.AddNewRecord(book);
+
             Console.ReadKey();
         }
     }

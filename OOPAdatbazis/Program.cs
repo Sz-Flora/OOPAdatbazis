@@ -11,7 +11,7 @@ namespace OOPAdatbazis
     {
         static void Main(string[] args)
         {
-            ISqlStatements sqlStatements = new TableBooks();
+            ISqlStatements sqlStatements = new TableCars();
 
             //Feladat 1
             /*
@@ -58,6 +58,7 @@ namespace OOPAdatbazis
             */
 
             //Feladat 5
+            /*
             Console.Write("Kérem a könyv id-t: ");
             int id = int.Parse(Console.ReadLine());
             Console.Write("Kérem a könyv címét: ");
@@ -75,6 +76,22 @@ namespace OOPAdatbazis
             };
 
             Console.WriteLine(sqlStatements.UpdateRecord(id, book));
+            */
+            Console.Write("Márka: ");
+            string marka = Console.ReadLine();
+            Console.Write("Tipus: ");
+            string tipus = Console.ReadLine();
+            Console.Write("Dátum: ");
+            string datum = Console.ReadLine();
+
+            var car = new
+            {
+                Brand = marka,
+                Type = tipus,
+                MDate = datum,
+            };
+
+            sqlStatements.AddNewRecord(car);
 
             Console.ReadKey();
         }

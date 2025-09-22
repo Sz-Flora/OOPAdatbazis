@@ -17,10 +17,10 @@ namespace OOPAdatbazis
         private string _password;
         private string ConnectionString;
 
-        public Connect(string database)
+        public Connect()
         {
             _host = "localhost";
-            _database = database;
+            _database = "library";
             _user = "root";
             _password = "";
 
